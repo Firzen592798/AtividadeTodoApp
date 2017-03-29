@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { ShowTaskPage } from '../pages/show-task/show-task';
+import { EditTaskPage } from '../pages/edit-task/edit-task';
 import { LoginPage } from '../pages/login/login';
 import { TaskMapPage } from '../pages/task-map/task-map';
 import { ShowTaskComponent } from '../components/show-task.component';
@@ -47,6 +48,7 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     ShowTaskPage,
+    EditTaskPage,
     LoginPage,
     ShowTaskComponent,
     TaskMapPage
@@ -65,6 +67,7 @@ const cloudSettings: CloudSettings = {
     Page1,
     Page2,
     ShowTaskPage,
+    EditTaskPage,
     LoginPage,
     TaskMapPage
   ],

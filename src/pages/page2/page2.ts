@@ -8,6 +8,8 @@ import { FirebaseApp, AngularFire, FirebaseListObservable} from 'angularfire2';
 
 import { AuthService } from '../../providers/auth-service';
 
+import { EditTaskPage } from '../edit-task/edit-task';
+
 @Component({
   selector: 'page-page2',
   templateUrl: 'page2.html'
@@ -120,6 +122,13 @@ export class Page2 {
           icon: 'archive',
           handler: () => {
             this.markAsCompleted(item);
+          }
+        },
+        {
+          text: 'Editar',
+          icon: 'edit',
+          handler: () => {
+              this.navCtrl.push(EditTaskPage);
           }
         },
         {
