@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+    <ion-title>Editar Tarefa</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  Nome da tarefa
+
+  <ion-textarea placeholder="Digite uma tarefa" rows="5" [(ngModel)]="txtTarefa"> 
+
+  </ion-textarea>
+
+  <ion-item>
+      <ion-label>Urgente</ion-label>
+      <ion-checkbox [(ngModel)]="isUrgente"></ion-checkbox>
+    </ion-item>
+
+  <ion-item>
+      <ion-label>Finalizada</ion-label>
+      <ion-checkbox [(ngModel)]="isFeita"></ion-checkbox>
+    </ion-item>
+
+  
+  <button ion-button block (click)="salvarTarefa()" >Salvar Tarefa</button>
+</ion-content>
+
+

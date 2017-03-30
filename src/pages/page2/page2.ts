@@ -19,6 +19,7 @@ export class Page2 {
   icons: string[];
   items: FirebaseListObservable<any>;
   showTaskPage = ShowTaskPage;
+  editTaskPage = EditTaskPage;
   showOnlyCompletedActives = "false";
   limit = 15;
   firebase: any;
@@ -126,9 +127,16 @@ export class Page2 {
         },
         {
           text: 'Editar',
-          icon: 'edit',
+          icon: 'document',
           handler: () => {
-              this.navCtrl.push(EditTaskPage);
+            let modal = this.modalCtrl.create(EditTaskPage, {
+              item: item
+            });
+            modal.present();
+            modal.onDidDismiss(params => {
+              console.log(JSON.stringify(params));
+             this.editarTarefa(item, params.nome, params.urgent, params.feita);
+            });
           }
         },
         {
@@ -163,6 +171,12 @@ export class Page2 {
     this.items.update(item, {urgent: true});
   }
   
+  editarTarefa(item, txtNote, urgente, completed) {
+    console.log("Urgente "+urgente);
+    console.log("Completed "+completed);
+    this.items.update(item, {note: txtNote, urgent: urgente, completed: completed});
+    console.log("Items: "+this.items);
+  }
 
   delete(item) {
     this.items.remove(item);
