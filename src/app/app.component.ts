@@ -54,7 +54,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       if(this.auth.authenticated) {
-        this.nav.setRoot(Page1);
+        this.nav.setRoot(Page2);
       } else {
         this.nav.setRoot(LoginPage);
       }
