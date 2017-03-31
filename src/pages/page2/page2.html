@@ -34,6 +34,10 @@
   </ion-infinite-scroll>
 </ion-content>
 
+<ion-fab top right>
+    <button [navPush]="page1" ion-fab color="danger" mini>	<ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
 <ion-footer>
   <ion-segment [(ngModel)]="showOnlyCompletedActives" (ngModelChange)="queryTasks()" color="primary">
     <ion-segment-button value="1">

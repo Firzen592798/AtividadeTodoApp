@@ -10,6 +10,8 @@ import { AuthService } from '../../providers/auth-service';
 
 import { EditTaskPage } from '../edit-task/edit-task';
 
+import { Page1 } from '../page1/page1';
+
 @Component({
   selector: 'page-page2',
   templateUrl: 'page2.html'
@@ -25,6 +27,7 @@ export class Page2 {
   firebase: any;
   reorder = false;
   itemsArray: any;
+  page1=Page1;
 
 
   constructor(public navCtrl: NavController, 
