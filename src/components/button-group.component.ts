@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Input, Inject} from '@angular/core';
 import { ViewController, NavController, NavParams } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from '../providers/auth-service';
 
 /*
   Generated class for the ShowTask page.
@@ -10,24 +10,24 @@ import { AuthService } from '../../providers/auth-service';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-show-task',
-  templateUrl: 'show-task.html'
+  selector: 'button-group',
+  templateUrl: 'button-group.component.html'
 })
-export class ShowTaskPage {
-  item: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-               public auth: AuthService,
+export class ButtonGroupComponent {
+  _item: any;
+   firebase: any;
+  constructor(public auth: AuthService, public navCtrl: NavController, public navParams: NavParams,
                @Inject(FirebaseApp) firebaseApp: any,
                public viewCtrl: ViewController) {
       this.item = this.navParams.get("item");
+      this.firebase = firebaseApp;
   }
 
   close() {
     this.viewCtrl.dismiss();
   }
 
-  /*closeAndMarkAsCompleted() {
+  closeAndMarkAsCompleted() {
     this.viewCtrl.dismiss({markAsCompleted: true});
   }
 
@@ -38,6 +38,15 @@ export class ShowTaskPage {
 
   closeAndDelete() {
     this.viewCtrl.dismiss({delete: true});
-}*/
+  }
+
+  @Input()
+  set item(item) {
+    this._item = item;
+  }
+
+  get item() {
+    return this._item;
+  }
 
 }

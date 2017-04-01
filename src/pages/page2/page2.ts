@@ -105,8 +105,16 @@ export class Page2 {
             modal.present();
             modal.onDidDismiss(params => {
               console.log(JSON.stringify(params));
-              if(params && params.markAsCompleted){
+              if(params){
+                if(params.markAsCompleted){
                 this.markAsCompleted(item);
+                }
+                if(params.markAsUrgente){
+                this.markAsUrgent(item);
+                }
+                if(params.delete){
+                this.delete(item);
+                }
               }
             });
           }

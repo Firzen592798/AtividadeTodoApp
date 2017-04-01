@@ -8,7 +8,7 @@ import { EditTaskPage } from '../pages/edit-task/edit-task';
 import { LoginPage } from '../pages/login/login';
 import { TaskMapPage } from '../pages/task-map/task-map';
 import { ShowTaskComponent } from '../components/show-task.component';
-
+import { ButtonGroupComponent } from '../components/button-group.component';
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from '../providers/auth-service';
 
@@ -51,6 +51,7 @@ const cloudSettings: CloudSettings = {
     EditTaskPage,
     LoginPage,
     ShowTaskComponent,
+    ButtonGroupComponent,
     TaskMapPage
   ],
   imports: [
