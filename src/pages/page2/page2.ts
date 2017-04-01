@@ -10,6 +10,8 @@ import { AuthService } from '../../providers/auth-service';
 
 import { EditTaskPage } from '../edit-task/edit-task';
 
+import { Page1 } from '../page1/page1';
+
 @Component({
   selector: 'page-page2',
   templateUrl: 'page2.html'
@@ -20,11 +22,12 @@ export class Page2 {
   items: FirebaseListObservable<any>;
   showTaskPage = ShowTaskPage;
   editTaskPage = EditTaskPage;
-  showOnlyCompletedActives = "false";
+  showOnlyCompletedActives = "1";
   limit = 15;
   firebase: any;
   reorder = false;
   itemsArray: any;
+  page1=Page1;
 
 
   constructor(public navCtrl: NavController, 
@@ -48,10 +51,19 @@ export class Page2 {
   }
 
   queryTasks(infiniteScroll) {  
-      if(this.showOnlyCompletedActives == "true") {
+      if(this.showOnlyCompletedActives == "2") {
         this.items =  this.af.database.list('/todos/'+this.auth.uid, {
                         query: {
                           orderByChild: 'completed',
+                          equalTo: true,
+                          limitToFirst: this.limit
+                        }
+                      });
+                      
+      }else if(this.showOnlyCompletedActives == "3") {
+        this.items =  this.af.database.list('/todos/'+this.auth.uid, {
+                        query: {
+                          orderByChild: 'not_completed',
                           equalTo: true,
                           limitToFirst: this.limit
                         }
@@ -134,6 +146,13 @@ export class Page2 {
           }
         },
         {
+          text: 'Marcar como nao feita',
+          icon: 'archive',
+          handler: () => {
+            this.markAsNotCompleted(item);
+          }
+        },
+        {
           text: 'Editar',
           icon: 'document',
           handler: () => {
@@ -173,6 +192,12 @@ export class Page2 {
 
   markAsCompleted(item) {
     this.items.update(item, {completed: true});
+    this.items.update(item, {not_completed: false});
+  }
+  
+    markAsNotCompleted(item) {
+    this.items.update(item, {not_completed: true});
+    this.items.update(item, {completed: false});
   }
 
   markAsUrgent(item) {
